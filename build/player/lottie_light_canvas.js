@@ -6479,7 +6479,7 @@ CanvasRenderer.prototype.updateContainerSize = function () {
 };
 
 CanvasRenderer.prototype.destroy = function () {
-    if(this.renderConfig.clearCanvas) {
+    if(this.renderConfig.clearCanvas && this.animationItem.wrapper) {
         this.animationItem.wrapper.innerHTML = '';
     }
     var i, len = this.layers ? this.layers.length : 0;
