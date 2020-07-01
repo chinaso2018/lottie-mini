@@ -1,3 +1,9 @@
+/*
+ * @Author: zhouyuying
+ * @Date:   2020-06-30 16:07:51
+ * @Last Modified by:   zhouyuying
+ * @Last Modified time: 2020-07-01 14:02:43
+ */
 var animationManager = (function(){
     var moduleOb = {};
     var registeredAnimations = [];
@@ -6,7 +12,8 @@ var animationManager = (function(){
     var playingAnimationsNum = 0;
     var _stopped = true;
     var _isFrozen = false;
-
+    var timeFrame = null;
+    
     function removeElement(ev){
         var i = 0;
         var animItem = ev.target;
@@ -102,7 +109,7 @@ var animationManager = (function(){
         }
         initTime = nowTime;
         if(playingAnimationsNum && !_isFrozen) {
-            window.requestAnimationFrame(resume);
+            timeFrame = window.requestAnimationFrame(resume);
         } else {
             _stopped = true;
         }
@@ -110,7 +117,7 @@ var animationManager = (function(){
 
     function first(nowTime){
         initTime = nowTime;
-        window.requestAnimationFrame(resume);
+        timeFrame = window.requestAnimationFrame(resume);
     }
 
     function pause(animation) {
@@ -146,6 +153,7 @@ var animationManager = (function(){
         for(i=(len-1);i>=0;i-=1){
             registeredAnimations[i].animation.destroy(animation);
         }
+        timeFrame && window.cancelAnimationFrame(timeFrame)
     }
 
     function searchAnimations(animationData, standalone, renderer){
@@ -181,9 +189,10 @@ var animationManager = (function(){
     }
 
     function activate(){
+        console.log(_isFrozen,playingAnimationsNum)
         if(!_isFrozen && playingAnimationsNum){
             if(_stopped) {
-                window.requestAnimationFrame(first);
+                timeFrame = window.requestAnimationFrame(first);
                 _stopped = false;
             }
         }

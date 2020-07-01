@@ -1,3 +1,9 @@
+/*
+ * @Author: zhouyuying
+ * @Date:   2020-07-01 14:03:28
+ * @Last Modified by:   zhouyuying
+ * @Last Modified time: 2020-07-01 14:03:28
+ */
 var AnimationItem = function () {
     this._cbs = [];
     this.name = '';
@@ -484,6 +490,7 @@ AnimationItem.prototype.destroy = function (name) {
     this._cbs = null;
     this.onEnterFrame = this.onLoopComplete = this.onComplete = this.onSegmentStart = this.onDestroy = null;
     this.renderer = null;
+    console.log('animation item destroy',this.renderer)
 };
 
 AnimationItem.prototype.setCurrentRawFrameValue = function(value){
