@@ -2,7 +2,7 @@
  * @Author: zhouyuying
  * @Date:   2020-06-30 16:07:51
  * @Last Modified by:   zhouyuying
- * @Last Modified time: 2020-07-01 22:03:41
+ * @Last Modified time: 2020-07-02 16:01:25
  */
 var animationManager = (function () {
   var moduleOb = {}
@@ -150,7 +150,20 @@ var animationManager = (function () {
       registeredAnimations[i].animation.togglePause(animation)
     }
   }
-
+  function destroyAll(){
+    var i
+    for (i = len - 1; i >= 0; i -= 1) {
+      registeredAnimations[i].animation.destroy()
+    }
+    timeFrame && window.cancelAnimationFrame(timeFrame)
+    _stopped = true
+    registerAnimation = []
+    initTime = 0
+    len = 0
+    playingAnimationsNum = 0
+    _isFrozen = false
+    timeFrame = null
+  }
   function destroy(animation) {
     var i
     for (i = len - 1; i >= 0; i -= 1) {
@@ -227,6 +240,7 @@ var animationManager = (function () {
   //moduleOb.start = start;
   moduleOb.goToAndStop = goToAndStop
   moduleOb.destroy = destroy
+  moduleOb.destroyAll = destroyAll
   moduleOb.freeze = freeze
   moduleOb.unfreeze = unfreeze
   moduleOb.getRegisteredAnimations = getRegisteredAnimations

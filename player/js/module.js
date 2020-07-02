@@ -1,3 +1,9 @@
+/*
+ * @Author: zhouyuying
+ * @Date:   2020-07-02 15:12:56
+ * @Last Modified by:   zhouyuying
+ * @Last Modified time: 2020-07-02 15:12:57
+ */
 "use strict";
 /*<%= contents %>*/
 var lottie = {};
@@ -86,6 +92,7 @@ lottie.resize = animationManager.resize;
 //lottie.start = start;
 lottie.goToAndStop = animationManager.goToAndStop;
 lottie.destroy = animationManager.destroy;
+lottie.destroyAll = animationManager.destroyAll;
 lottie.setQuality = setQuality;
 lottie.inBrowser = inBrowser;
 lottie.installPlugin = installPlugin;
