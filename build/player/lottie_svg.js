@@ -8856,7 +8856,7 @@ SVGEffects.prototype.renderFrame = function(_isFirstFrame){
  * @Author: zhouyuying
  * @Date:   2020-06-30 16:07:51
  * @Last Modified by:   zhouyuying
- * @Last Modified time: 2020-07-02 16:01:25
+ * @Last Modified time: 2020-07-08 20:17:20
  */
 var animationManager = (function () {
   var moduleOb = {}
@@ -9004,7 +9004,7 @@ var animationManager = (function () {
       registeredAnimations[i].animation.togglePause(animation)
     }
   }
-  function destroyAll(){
+  function destroyAll() {
     var i
     for (i = len - 1; i >= 0; i -= 1) {
       registeredAnimations[i].animation.destroy()
@@ -9023,8 +9023,6 @@ var animationManager = (function () {
     for (i = len - 1; i >= 0; i -= 1) {
       registeredAnimations[i].animation.destroy(animation)
     }
-    timeFrame && window.cancelAnimationFrame(timeFrame)
-    _stopped = true
   }
 
   function searchAnimations(animationData, standalone, renderer) {

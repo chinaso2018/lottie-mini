@@ -1,6 +1,6 @@
 {
   "name": "@chinaso2018/lottie-mini",
-  "version": "5.7.5",
+  "version": "5.7.6",
   "description": "lottie-web for miniprogram in weapp",
   "main": "./build/player/lottie.js",
   "repository": {
